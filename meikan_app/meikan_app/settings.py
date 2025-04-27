@@ -26,7 +26,7 @@ env.read_env(os.path.join(BASE_DIR, ".env"))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # ローカルテスト時は設定必要
-# SECRET_KEY =
+SECRET_KEY = os.environ.get("SECRET_KEY", default="your secret key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
