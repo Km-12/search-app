@@ -1,0 +1,33 @@
+{% extends "base/base.html" %}
+
+{% block body %}
+<div class="profile-card">
+    <div class="profile-item">
+        <h3>所属</h3>
+        <p>{{ member.company }}</p>
+    </div>
+    <div class="profile-item">
+        <h3>名前</h3>
+        <p>{{ member.name }}</p>
+    </div>
+    <div class="profile-item">
+        <h3>誕生日</h3>
+        <p>{{ member.birthday|slice:":2" }}月{{ member.birthday|slice:"2:" }}日</p>
+    </div>
+    <div class="profile-item">
+        <h3>出身</h3>
+        <p>{{ member.hometown }}</p>
+    </div>
+    <div class="profile-item">
+        <h3>経歴</h3>
+        <p>{{ member.history }}</p>
+    </div>
+    <div class="profile-item">
+        <h3>受賞歴</h3>
+        <p>{{ member.awards }}</p>
+    </div>
+</div>
+<div class="card-footer">
+    <p><a href="{% url 'search:search_main' %}" class="btn-back">戻る</a></p>
+</div>
+{% endblock %}

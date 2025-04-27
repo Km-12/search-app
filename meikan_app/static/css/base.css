@@ -1,0 +1,175 @@
+/* 全体のフォントや背景色の設定 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ヘッダー部分 */
+h1, h2, h3 {
+    color: #333;
+}
+
+/* 基本的なレイアウト */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container h1, h2 {
+    text-align: center;
+}
+
+.start p {
+    text-align: center;
+}
+
+div {
+    padding: 20px;
+}
+
+/* ナビゲーションリンクのスタイル */
+a {
+    color: #7ca7e7;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #385a8e;
+}
+
+/* ボタンのスタイル */
+button {
+    background-color: #385a8e;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #87a9db;
+}
+
+/* テーブルのデザイン */
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 25px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f1f1f1;
+    color: #184e9e;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #e0f7fa;
+}
+
+/* フォームのデザイン */
+form {
+    width: 75%;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form p input, form p textarea, form p select {
+    font-size: 14px;
+    width: 85%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* フッター */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 40px;
+}
+
+/* ベースのカードスタイル */
+.profile-card {
+    width: 500px;
+    margin: 10px auto;
+    padding: 0px 5px 15px 5px;
+    border: 2px solid #1E90FF;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+}
+
+.profile-item {
+    margin-bottom: 0px;
+}
+
+.profile-item h3 {
+    font-size: 1.2em;
+    color: #1E90FF; /* セクションのタイトルを目立たせる */
+    margin-bottom: 0px;
+}
+
+.profile-item p {
+    font-size: 1.1em;
+    color: #333;
+    margin-left: 15px;
+    margin-bottom: 0px;
+}
+
+.card-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.card-footer .btn-back {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1E90FF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-footer .btn-back:hover {
+    background-color: #4682B4;
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+}

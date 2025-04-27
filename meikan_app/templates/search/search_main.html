@@ -1,0 +1,47 @@
+{% extends "base/base.html" %}
+
+{% block body %}
+<div>
+    <p>検索条件を入力してください。</p>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">検索</button>
+    </form>
+    <br>
+    {% if member_list %}
+    <form method="POST" action="{% url 'search:selected_download' %}">
+        {% csrf_token %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>選択</th>
+                    <th>所属</th>
+                    <th>名前</th>
+                    <th>詳細</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for member in member_list %}
+                <tr>
+                    <td><input type="checkbox" name="selected_members" value="{{ member.id }}"></td>
+                    <td>{{ member.company }}</td>
+                    <td>{{ member.name }} </td>
+                    <td><a href="{% url 'search:search_detail' member.id %}">表示</a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">該当するメンバーが見つかりませんでした。</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <td colspan="3">対象が見つかりませんでした。</td>
+        {% endif %}
+        <br>
+        <button type="submit">ダウンロード</button>
+    </form>
+    <p><a href="{% url 'search:index' %}">戻る</a></p>
+</div>
+{% endblock %}
