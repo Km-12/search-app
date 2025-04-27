@@ -17,8 +17,15 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect
+
+
+def root_redirect(request):
+    return redirect("/search/")
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("search/", include("search.urls")),
+    path("", root_redirect),
 ]
