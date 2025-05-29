@@ -18,9 +18,26 @@ class IndexView(View):
 class SearchMainView(View):
     # 初期表示
     def get(self, request):
-        form = MemberForm()
-        # 全件取得して10件表示する
-        member_list = Member.objects.all()[:10]
+        if not request.GET:
+            form = MemberForm()
+            # 全件取得して10件表示する
+            member_list = Member.objects.all()[:10]
+        else:
+            form = MemberForm(request.GET)
+            member_list = []
+
+            # 詳細画面から戻りの場合
+            if form.is_valid():
+                search_param = form.cleaned_data
+                company = search_param.get("company")
+                name = search_param.get("name")
+
+                # 検索条件の指定
+                filter_conditions = util.create_param(
+                    ("company", company), ("name", name)
+                )
+                member_list = Member.objects.filter(filter_conditions)
+
         return render(
             request,
             "search/search_main.html",
@@ -86,7 +103,15 @@ class SelectedDownloadView(View):
 class SearchDetailView(View):
     def get(self, request, id):
         member = get_object_or_404(Member, id=id)
-        return render(request, "search/search_detail.html", {"member": member})
+
+        company = request.GET.get("company", "")
+        name = request.GET.get("name", "")
+
+        return render(
+            request,
+            "search/search_detail.html",
+            {"member": member, "company": company, "name": name},
+        )
 
 
 # ユーティリティクラス

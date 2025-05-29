@@ -2,8 +2,8 @@
 
 {% block body %}
 <div>
-    <p>検索条件を入力してください。</p>
     <form method="POST">
+        <p>条件を入力して、「検索」ボタンを押すと検索できます。</p>
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">検索</button>
@@ -27,7 +27,9 @@
                     <td><input type="checkbox" name="selected_members" value="{{ member.id }}"></td>
                     <td>{{ member.company }}</td>
                     <td>{{ member.name }} </td>
-                    <td><a href="{% url 'search:search_detail' member.id %}">表示</a></td>
+                    <td><a
+                            href="{% url 'search:search_detail' member.id %}?company={{ form.cleaned_data.company }}&name={{ form.cleaned_data.name }}">表示</a>
+                    </td>
                 </tr>
                 {% empty %}
                 <tr>
@@ -40,6 +42,7 @@
         <td colspan="3">対象が見つかりませんでした。</td>
         {% endif %}
         <br>
+        <p>対象を選択して、「ダウンロード」ボタンを押すと、詳細をダウンロードできます。</p>
         <button type="submit">ダウンロード</button>
     </form>
     <p><a href="{% url 'search:index' %}">戻る</a></p>
